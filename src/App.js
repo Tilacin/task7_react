@@ -1,14 +1,26 @@
-import React from 'react'
-import DateCounter from './DateCounter'
-
+import React, { useEffect } from "react";
+import Header from "./Header";
+import Main from "./Main";
 
 function App() {
+  useEffect(function () {
+    fetch("http://localhost:8000/questions")
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.error("Error"));
+  }, []);
+
   return (
-    <div>
-      <DateCounter/>
+    <div className="app">
+      <Header />
+
+      <Main>
+        <p>1/15</p>
+        <p>Question?</p>
+      </Main>
     </div>
-  )
+  );
 }
 
-export default App
-//187
+export default App;
+//191 7:50
